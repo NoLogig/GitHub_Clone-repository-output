@@ -1,59 +1,42 @@
+﻿
+Wenn ein Repository zusätzlich an einem weiteren Ort gespiegelt werden soll, 
+können einfach weitere push-URLs hinzugefügt werden, die auf andere Repositories verweisen.
 
-
-# Demo: Repository spiegel 
-
-## Repository Klonen, welches gespiegelt werden soll 
+## 1. Repository Klonen, welches gespiegelt werden soll.
 ```bash
-git clone https://github.com/NoLogig/MirrorTestRepo4Blog.git
+
+  git clone https://github.com/NoLogig/MirrorTestRepo4Blog.git    
+
 ```
 
-### Repository Klonen, welches gespiegelt werden soll 
+## 2. ins geklonte Repository-Verzeichnis wechseln
 ```bash
-git clone --mirror https://github.com/NoLogig/MirrorOutputRepo4Blog.git 
+
+cd MirrorTestRepo4Blog
+
 ```
 
-## anschließend ins geklonte Verzeichnis wechseln.
+## 3. push-URL hinzufügen
 ```bash
-cd MirrorTestRepo4Blog.git
+
+git remote set-url --add origin https://github.com/NoLogig/MirrorOutputRepo4Blog.git
+
 ```
 
-### anschließend ins geklonte Verzeichnis wechseln.
+## 4. fetch/- und push-URL’s zur Kontrolle ausgeben
 ```bash
-cd MirrorOutputRepo4Blog.git
-```
 
-## fetch/- und push-URL’s ausgeben lassen.  
-```bash
 git remote –v 
+
 ```
 
-## push-URL ändern .
---push Parameter ändert nur die Push-URL. 
+## 5. Test: Ein push, wird nun beide Repositories updaten
 ```bash
-git remote set-url --push origin https://github.com/NoLogig/MirrorOutputRepo4Blog.git
-```
-
-### push-URL ändern .
---push Parameter ändert nur die Push-URL. 
-```bash
-git remote set-url --push origin https://github.com/NoLogig/mirrorFetchPush.git
-```
-## oder weitere hinzufügen
-```bash
-git remote set-url --add --push origin https://github.com/Nutzer/weiteresRepository.git
-```
-
-## Test clone fetch, pull, push ausführen, um die Repos zu vergleichen und ggf. zu aktualisieren.
-```bash
-git fetch && git pull && git push
-```
-
-```bash
-git commit -m 'neuer commit'
+touch testDatei.txt
+git add .
+git commit -m “test commit”
 git push
 ```
 
-### Test mirror fetch, pull, push ausführen, um die Repos zu vergleichen und ggf. zu aktualisieren.
-```bash
-git fetch -p origin && git push --mirror
-```
+
+
